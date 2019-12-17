@@ -23,8 +23,8 @@ stock1 = ["amzn", 0, 0, 0]
 stock2 = ["aapl", 0, 0, 0]
 
 
-def get_diff(first, second, stockmrkt):
-	first = si.get_live_price(stockmrkt)
+def get_diff(first, second, stock_name):
+	first = si.get_live_price(stock_name)
 	return first - second, first
 
 
@@ -39,6 +39,7 @@ def send_diff(stock, diff, value):
 	client.send_message("/" + stock + "/value", value)
 	client.send_message("/" + stock + "/diff", sign)
 
+
 f = open("stocks0612.txt", 'r')
 
 # stock1[3], stock1[1] = get_diff(stock1[1], stock1[2], stock1[0])
@@ -47,48 +48,27 @@ f = open("stocks0612.txt", 'r')
 i = 1
 
 while i < 10:
-	if i == 0:
 
-		# stock1[3], stock1[1] = get_diff(stock1[1], stock1[2], stock1[0])
-		# stock2[3], stock2[1] = get_diff(stock2[1], stock2[2], stock2[0])
+	# stock1[3], stock1[1] = get_diff(stock1[i + 1], stock1[((i + 1) % 2) + 1], stock1[0])
 
-		line = f.readline().split('\n')[0].split(',')
+	# lettura stock1
+	line = f.readline().split('\n')[0].split(',')
+	stock1[i + 1] = line[i + 1]
+	stock1[3] = line[3]
 
-		stock1[1] = line[1]
-		stock1[3] = line[3]
+	# lettura stock2
+	line = f.readline().split('\n')[0].split(',')
+	stock2[i + 1] = line[i + 1]
+	stock2[3] = line[3]
 
-		line = f.readline().split('\n')[0].split(',')
+	# invio tramite osc di valori stock1
+	send_diff("1", float(stock1[3]), float(stock1[i + 1]))
 
-		stock2[3] = line[3]
-
-		send_diff("1", float(stock1[3]), stock1[1])
-		# send_diff("2", float(stock2[3]))
-
-		print("stock1")
-		print(stock1)
-		print("stock2")
-		print(stock2)
-	else:
-
-		# stock1[3], stock1[2] = get_diff(stock1[2], stock1[1], stock1[0])
-		# stock2[3], stock2[2] = get_diff(stock2[2], stock2[1], stock2[0])
-
-		line = f.readline().split('\n')[0].split(',')
-
-		stock1[2] = line[2]
-		stock1[3] = line[3]
-
-		line = f.readline().split('\n')[0].split(',')
-
-		stock2[3] = line[3]
-
-		send_diff("1", float(stock1[3]), stock1[2])
-		# send_diff("2", float(stock2[3]))
-
-		print("stock1")
-		print(stock1)
-		print("stock2")
-		print(stock2)
+	# debug
+	print("stock1")
+	print(stock1)
+	print("stock2")
+	print(stock2)
 
 	time.sleep(1)
 
