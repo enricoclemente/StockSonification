@@ -24,7 +24,7 @@ http://opensoundcontrol.org/introduction-osc
 
 Oltre ad installare i tool sopra citati, bisogna installare delle librerie Python che si occupano dello stream dei dati in tempo reale e della trasmissione dei dati tramite protocollo OSC.
 
-Seguire le istruzioni del prossimo link per installare la librearia yahoo_fin:
+Seguire le istruzioni del prossimo link per installare la libreria yahoo_fin:
 http://theautomatic.net/yahoo_fin-documentation/
 Piccola guida Yahoo Fin:
 http://theautomatic.net/2018/07/31/how-to-get-live-stock-prices-with-python/
