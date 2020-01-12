@@ -35,15 +35,15 @@ https://pypi.org/project/python-osc/
 ## Test
 
 Per provare il progetto bisogna seguire i seguenti passaggi:
-- connettere a rete WI-FI il/i PC
-- eseguire script python
-  - inserire l'indirizzo IP della e la porta di rete
-  - inserire i nomi delle azioni che si vogliono ottenere (es. "appl", "amzn", "msft")
-- aprire patch MAX "receiver"
+- connettere alla rete WI-FI il/i PC
+- eseguire lo script python
+  - inserire l'indirizzo IP e la porta di rete
+  - inserire i nomi delle azioni che si vogliono monitorare (es. "appl", "amzn", "msft")
+- aprire la patch MAX "receiver"
   - impostare nell'oggetto "udpreceive" la stessa porta di rete fornita allo script python
-  - premere il Toggle per far partire la sincronizzazione dei player
+  - premere il Toggle (il tasto X) per far partire la sincronizzazione dei player
   - premere "open Global Transport" e impostare un valore di BPM
-- aprire patch MAX "player"
+- aprire la patch MAX "player"
   - per un utilizzo "utente" premere il pulsante presentazione (in basso a sinistra)
   - attivare l'audio dal pulsante in alto a sinistra
   - all'interno della patch ci sono 3 player ognuno con una propria generazione di note MIDI e sintesi sonora
